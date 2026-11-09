@@ -55,3 +55,16 @@ CORREÇÃO ESPECÍFICA DO PREVIEW WHATSAPP — TURMA B
 - Ao publicar, mantenha whatsapp-preview-turma-b.jpg na raiz do repositório, ao lado do index.html.
 - Não é necessário enviar whatsapp-preview-turma-b-final.jpg para que o preview funcione.
 - Após o commit, compartilhe o link com ?preview=20261109b no final para testar uma prévia nova.
+
+
+CORREÇÃO DEFINITIVA DO PREVIEW — TURMA B (ZIP REAL DO GITHUB)
+- O nome do repositório identificado pelo ZIP é Convite-Formatura-ABC-Turma.B (com PONTO antes do B).
+- As metatags do index.html estavam apontando para Convite-Formatura-ABC-Turma-B (com HÍFEN), um endereço diferente.
+- O canonical e og:url agora usam: https://premium-invites.github.io/Convite-Formatura-ABC-Turma.B/
+- image_src, og:image, og:image:secure_url e twitter:image agora usam:
+  https://premium-invites.github.io/Convite-Formatura-ABC-Turma.B/whatsapp-preview-turma-b-final.jpg
+- A imagem whatsapp-preview-turma-b-final.jpg está na RAIZ do projeto, ao lado do index.html.
+- A imagem tem 1200 x 630 px, JPEG, tamanho 275810 bytes.
+- Ao publicar, mantenha index.html e whatsapp-preview-turma-b-final.jpg na raiz do repositório.
+- Para testar uma nova prévia, compartilhe:
+  https://premium-invites.github.io/Convite-Formatura-ABC-Turma.B/?preview=20261109-dot-fix
