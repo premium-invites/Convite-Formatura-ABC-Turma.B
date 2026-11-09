@@ -45,3 +45,13 @@ https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/?preview=2026110
 
 IMPORTANTE
 Alguns navegadores não permitem áudio automático antes do primeiro toque. O opening começa automaticamente sem som; o visitante deve tocar "Ativar áudio e música" para ouvir as falas/efeitos e a trilha. O botão não pula nem reinicia o opening.
+
+
+CORREÇÃO ESPECÍFICA DO PREVIEW WHATSAPP — TURMA B
+- O index.html agora aponta para a capa original que já existe na raiz:
+  whatsapp-preview-turma-b.jpg
+- Todas as referências image_src, og:image, og:image:secure_url e twitter:image usam o mesmo arquivo.
+- A capa tem 1200 × 630 px e formato JPEG.
+- Ao publicar, mantenha whatsapp-preview-turma-b.jpg na raiz do repositório, ao lado do index.html.
+- Não é necessário enviar whatsapp-preview-turma-b-final.jpg para que o preview funcione.
+- Após o commit, compartilhe o link com ?preview=20261109b no final para testar uma prévia nova.
