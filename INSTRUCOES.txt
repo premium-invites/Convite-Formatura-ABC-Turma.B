@@ -1,0 +1,47 @@
+CONVITE CEPA — TURMA B | VERSÃO FINAL REVISADA
+
+ARQUIVOS NA RAIZ
+- index.html
+- config.js
+- .nojekyll
+- whatsapp-preview-turma-b.jpg (capa antiga, manter)
+- whatsapp-preview-turma-b-final.jpg (capa Open Graph nova, usar esta no preview)
+
+PASTA assets
+- opening.mp4: abertura H.264 + AAC, com áudio original de falas e efeitos.
+- opening-poster.webp
+- video.mp4: vídeo principal da Turma B, em loop.
+- video-poster.webp
+- musica.mp3: trilha enviada pelo cliente, normalizada para -18.5 LUFS para não ficar baixa; volume do player em 0.60.
+- manual.webp: manual oficial atualizado.
+
+CORREÇÕES
+1. O opening contém vídeo H.264 e áudio AAC estéreo. O som original não foi removido.
+2. O opening inicia em autoplay silencioso para respeitar a política de áudio automático dos navegadores.
+3. O botão "Ativar áudio e música" retira o mute do opening (falas e efeitos em volume 100%) e inicia/continua a música MP3.
+4. A música MP3 fica em loop e com volume configurado em 0.60 (60%).
+5. A música não reinicia na transição do opening para o vídeo principal nem ao abrir/fechar o manual.
+6. Não existe botão para pular a abertura. A tela principal só aparece no evento ended do opening.
+7. O vídeo principal da Turma B permanece em loop.
+8. O único hotspot invisível é o Manual do Convidado.
+9. O manual oficial atualizado foi mantido.
+
+WHATSAPP
+- A nova capa está na raiz: whatsapp-preview-turma-b-final.jpg
+- Dimensões 1200 x 630, JPEG, abaixo de 600 KB.
+- og:image, og:image:secure_url, twitter:image e image_src apontam para o novo nome.
+- As metatags estão no <head> de index.html. O config.js guarda className, musicVolume e hotspots; não precisa conter Open Graph.
+
+PUBLICAÇÃO
+1. Extraia o pacote e envie o CONTEÚDO para a raiz do repositório da Turma B.
+2. Substitua index.html e config.js.
+3. Substitua assets/opening.mp4, mantendo a pasta assets.
+4. Envie a nova capa whatsapp-preview-turma-b-final.jpg para a raiz do repositório.
+5. Mantenha os demais arquivos e pastas.
+6. Faça commit e aguarde o GitHub Pages.
+
+TESTE DO WHATSAPP
+https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/?preview=20261109final
+
+IMPORTANTE
+Alguns navegadores não permitem áudio automático antes do primeiro toque. O opening começa automaticamente sem som; o visitante deve tocar "Ativar áudio e música" para ouvir as falas/efeitos e a trilha. O botão não pula nem reinicia o opening.

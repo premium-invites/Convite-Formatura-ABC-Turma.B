@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#39070d">
+<meta name="description" content="Convite Especial da Formatura do ABC do CEPA — Turma B. Esperamos você!">
+<link rel="canonical" href="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/">
+<link rel="image_src" href="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/whatsapp-preview-turma-b-final.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CEPA — Formatura do ABC">
+<meta property="og:url" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/">
+<meta property="og:title" content="Convite da Formatura do ABC — Turma B">
+<meta property="og:description" content="Convite Especial da Formatura do ABC do CEPA — Turma B. Esperamos você!">
+<meta property="og:image" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/whatsapp-preview-turma-b-final.jpg">
+<meta property="og:image:secure_url" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/whatsapp-preview-turma-b-final.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Convite da Formatura do ABC — Turma B — CEPA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convite da Formatura do ABC — Turma B">
+<meta name="twitter:description" content="Convite Especial da Formatura do ABC do CEPA — Turma B. Esperamos você!">
+<meta name="twitter:image" content="https://premium-invites.github.io/Convite-Formatura-ABC-Turma-B/whatsapp-preview-turma-b-final.jpg">
+<title>Convite da Formatura do ABC — Turma B | CEPA</title>
+<link rel="preload" href="assets/opening.mp4?v=20261109final" as="video" type="video/mp4">
+<link rel="preload" href="assets/video.mp4?v=20261109final" as="video" type="video/mp4">
+<link rel="preload" href="assets/musica.mp3?v=20261109final2" as="audio">
+<script src="config.js"></script>
+</head>
+<body style="margin:0;width:100%;height:100%;overflow:hidden;background:#080204;font-family:Georgia,'Times New Roman',serif;">
+
+<!-- TELA 1: OPENING. O vídeo tenta começar sozinho; não há botão "toque para abrir". -->
+<section id="openingScreen" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080204;">
+  <div id="openingStage" style="position:relative;width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;overflow:hidden;background:#160307;">
+    <video id="openingVideo" autoplay muted playsinline webkit-playsinline preload="auto" poster="assets/opening-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
+      <source src="assets/opening.mp4?v=20261109final" type="video/mp4">
+    </video>
+    <div id="openingFallback" role="button" tabindex="0" hidden style="position:absolute;z-index:7;left:8%;right:8%;top:50%;transform:translateY(-50%);padding:14px;border:1px solid #ffe4a2;border-radius:12px;color:#fff0c9;background:rgba(35,4,10,.94);font:13px/1.4 system-ui,sans-serif;text-align:center;cursor:pointer;">
+      Toque para iniciar o vídeo de abertura.
+    </div>
+  </div>
+</section>
+
+<!-- TELA 2: VÍDEO PRINCIPAL. O MP4 já contém os desenhos dos botões. -->
+<section id="mainScreen" hidden style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;overflow:hidden;background:#080204;">
+  <div id="mainStage" style="position:relative;width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;overflow:hidden;background:#160307;">
+    <video id="mainVideo" playsinline webkit-playsinline loop preload="auto" poster="assets/video-poster.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
+      <source src="assets/video.mp4?v=20261109final" type="video/mp4">
+    </video>
+    <!-- Áreas 100% transparentes: não desenham botões, apenas recebem o clique. -->
+    <button id="manualHotspot" type="button" aria-label="Abrir Manual do Convidado" data-key="manual" style="position:absolute;z-index:4;left:16.4%;top:79.9%;width:67.2%;height:8%;padding:0;border:0;border-radius:999px;background:transparent;color:transparent;outline:none;"></button>
+  </div>
+</section>
+
+<!-- TELA 3: MANUAL COMO ARTE EM TELA CHEIA. -->
+<section id="manualScreen" hidden style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;overflow:hidden;background:#080204;">
+  <div style="position:relative;width:min(100vw,56.25vh);height:min(100vh,177.7778vw);aspect-ratio:9/16;overflow:hidden;background:#160307;">
+    <img id="manualImage" src="assets/manual.webp" alt="Manual do Convidado — Formatura do ABC CEPA" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160307;">
+    <button id="backToMain" type="button" aria-label="Voltar ao convite" style="position:absolute;z-index:5;top:max(12px,env(safe-area-inset-top));left:12px;width:42px;height:42px;border:1px solid #ffe6a5;border-radius:50%;color:#fff0c9;background:rgba(55,5,12,.82);font:700 25px/1 system-ui,sans-serif;">‹</button>
+  </div>
+</section>
+
+<!-- Música de fundo global: permanece tocando na abertura, vídeo principal e manual. -->
+<button id="musicUnlock" type="button" style="position:fixed;z-index:30;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);padding:10px 16px;border:1px solid #ffe4a2;border-radius:999px;color:#4b0b12;background:linear-gradient(#fff0c4,#dba64d);box-shadow:0 4px 18px #0008;font:700 12px system-ui,sans-serif;white-space:nowrap;">Ativar áudio e música</button>
+<div id="musicError" hidden style="position:fixed;z-index:29;left:8%;right:8%;bottom:70px;padding:10px;border:1px solid #ffe4a2;border-radius:10px;color:#fff0c9;background:rgba(35,4,10,.92);font:12px/1.4 system-ui,sans-serif;text-align:center;"></div>
+
+<!-- EDITOR: só aparece quando a URL termina em ?editor=1. -->
+<aside id="editorPanel" hidden style="position:fixed;z-index:20;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));max-height:42vh;overflow:auto;padding:12px;border:1px solid #e7bd68;border-radius:14px;color:#fff0ca;background:rgba(39,4,10,.96);box-shadow:0 8px 30px #000a;font:12px/1.35 system-ui,sans-serif;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;">
+    <strong style="color:#ffe3a0;font-size:14px;">Editor da área invisível — Turma B</strong>
+    <button id="closeEditor" type="button" style="border:1px solid #f2d28d;border-radius:7px;padding:7px 9px;color:#4a0b11;background:linear-gradient(#fff0c4,#dba64d);font-weight:700;">Fechar</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;">
+    <label>Área
+      <select id="areaSelect" style="width:100%;padding:6px;border:1px solid #c99b4c;border-radius:6px;color:#30070c;background:#fff0d0;">
+        <option value="manual">Manual do Convidado</option>
+      </select>
+    </label>
+    <label>Esquerda (%) <input id="leftInput" type="number" min="0" max="100" step="0.1" style="width:100%;"></label>
+    <label>Topo (%) <input id="topInput" type="number" min="0" max="100" step="0.1" style="width:100%;"></label>
+    <label>Largura (%) <input id="widthInput" type="number" min="1" max="100" step="0.1" style="width:100%;"></label>
+    <label>Altura (%) <input id="heightInput" type="number" min="1" max="100" step="0.1" style="width:100%;"></label>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:9px;">
+    <button id="saveLocal" type="button" style="border:1px solid #f2d28d;border-radius:7px;padding:7px 9px;color:#4a0b11;background:linear-gradient(#fff0c4,#dba64d);font-weight:700;">Salvar neste navegador</button>
+    <button id="copyConfig" type="button" style="border:1px solid #f2d28d;border-radius:7px;padding:7px 9px;color:#4a0b11;background:linear-gradient(#fff0c4,#dba64d);font-weight:700;">Copiar posições</button>
+    <button id="resetAreas" type="button" style="border:1px solid #f2d28d;border-radius:7px;padding:7px 9px;color:#4a0b11;background:linear-gradient(#fff0c4,#dba64d);font-weight:700;">Restaurar padrão</button>
+  </div>
+  <textarea id="exportCode" readonly style="display:block;width:100%;min-height:75px;margin-top:8px;border:1px solid #8e632d;border-radius:6px;padding:7px;color:#f8e6c2;background:#180307;font:10px/1.35 monospace;"></textarea>
+  <p id="editorStatus" style="min-height:1em;margin:6px 0 0;color:#b9f0c4;"></p>
+  <p style="margin:7px 0 0;color:#d9c6a4;font-size:10px;">Arraste as áreas azuis sobre os botões que já aparecem no vídeo. Puxe a bolinha no canto para redimensionar. Depois copie as posições para config.js.</p>
+</aside>
+
+<audio id="backgroundMusic" src="assets/musica.mp3?v=20261109final2" preload="auto" loop></audio>
+
+<script>
+(function () {
+  "use strict";
+  var cfg = window.CEPA_CONFIG || {};
+  var $ = function (id) { return document.getElementById(id); };
+  var openingScreen = $("openingScreen");
+  var mainScreen = $("mainScreen");
+  var manualScreen = $("manualScreen");
+  var openingVideo = $("openingVideo");
+  var mainVideo = $("mainVideo");
+  var music = $("backgroundMusic");
+  var musicUnlock = $("musicUnlock");
+  var musicError = $("musicError");
+  var openingFallback = $("openingFallback");
+  var editorPanel = $("editorPanel");
+  var manualHotspot = $("manualHotspot");
+  var editorMode = new URLSearchParams(window.location.search).get("editor") === "1";
+
+  var defaultAreas = {
+    manual: { left: 16.4, top: 79.9, width: 67.2, height: 8.0 }
+  };
+  var areas = JSON.parse(JSON.stringify(cfg.hotspots || defaultAreas));
+  var hotspotElements = { manual: manualHotspot };
+  var storageKey = "cepa-invite-hotspots-" + (cfg.className || "B");
+
+  function showOnly(screen) {
+    openingScreen.hidden = screen !== openingScreen;
+    mainScreen.hidden = screen !== mainScreen;
+    manualScreen.hidden = screen !== manualScreen;
+    openingScreen.style.display = screen === openingScreen ? "flex" : "none";
+    mainScreen.style.display = screen === mainScreen ? "flex" : "none";
+    manualScreen.style.display = screen === manualScreen ? "flex" : "none";
+  }
+
+  function applyAreas() {
+    Object.keys(hotspotElements).forEach(function (key) {
+      var el = hotspotElements[key];
+      var p = areas[key] || defaultAreas[key];
+      el.style.left = p.left + "%";
+      el.style.top = p.top + "%";
+      el.style.width = p.width + "%";
+      el.style.height = p.height + "%";
+    });
+    updateFields();
+    updateExport();
+  }
+
+  function startMusic() {
+    music.loop = true;
+    music.volume = Number(cfg.musicVolume == null ? 0.60 : cfg.musicVolume);
+    music.muted = false;
+    var attempt;
+    try {
+      attempt = music.play();
+    } catch (error) {
+      attempt = Promise.reject(error);
+    }
+    return Promise.resolve(attempt).then(function () {
+      musicError.hidden = true;
+      // Enquanto o opening estiver mudo, o botão precisa continuar visível
+      // para que o visitante possa liberar as falas e os efeitos do próprio vídeo.
+      musicUnlock.hidden = openingScreen.hidden || !openingVideo.muted;
+      return true;
+    }).catch(function (error) {
+      musicUnlock.hidden = false;
+      if (error && error.name && error.name !== "NotAllowedError" && error.name !== "AbortError") {
+        musicError.textContent = "Não foi possível carregar assets/musica.mp3. Confira o arquivo MP3.";
+        musicError.hidden = false;
+      }
+      return false;
+    });
+  }
+
+  function enterMain() {
+    if (!mainScreen.hidden) return;
+    openingVideo.pause();
+    showOnly(mainScreen);
+    mainVideo.loop = true;
+    mainVideo.muted = true;
+    mainVideo.currentTime = 0;
+    mainVideo.play().catch(function () {
+      musicError.textContent = "Não foi possível carregar assets/video.mp4?v=20261109final. Confira o vídeo principal.";
+      musicError.hidden = false;
+    });
+    // Não chamar startMusic aqui: a mesma faixa continua desde a abertura, sem reiniciar.
+  }
+
+  // A abertura NÃO é pulada quando há erro. O erro fica visível para diagnóstico.
+  openingVideo.addEventListener("error", function () {
+    openingFallback.textContent = "Não foi possível carregar assets/opening.mp4?v=20261109final. Verifique o arquivo no GitHub.";
+    openingFallback.hidden = false;
+  });
+
+  openingVideo.addEventListener("ended", enterMain);
+
+  // Loop nativo + fallback explícito, para reiniciar mesmo se o navegador emitir ended.
+  mainVideo.loop = true;
+  mainVideo.addEventListener("ended", function () {
+    if (!mainScreen.hidden) {
+      mainVideo.currentTime = 0;
+      mainVideo.play().catch(function () {});
+    }
+  });
+
+  mainVideo.addEventListener("error", function () {
+    musicError.textContent = "Erro ao carregar assets/video.mp4?v=20261109final. Verifique o arquivo principal desta turma.";
+    musicError.hidden = false;
+  });
+
+  openingFallback.addEventListener("click", function () {
+    openingVideo.muted = false;
+    openingVideo.defaultMuted = false;
+    openingVideo.removeAttribute("muted");
+    openingVideo.volume = 1.0;
+    startMusic();
+    openingFallback.hidden = true;
+    openingVideo.play().then(function () {
+      openingFallback.hidden = true;
+    }).catch(function () {
+      openingFallback.hidden = false;
+    });
+  });
+
+  openingFallback.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openingFallback.click();
+    }
+  });
+
+  music.addEventListener("error", function () {
+    musicError.textContent = "Não foi possível carregar assets/musica.mp3?v=20261109final2. Confira o arquivo MP3.";
+    musicError.hidden = false;
+    musicUnlock.hidden = true;
+  });
+
+  music.addEventListener("ended", function () {
+    // Fallback de loop para navegadores que não respeitem o atributo loop.
+    music.currentTime = 0;
+    music.play().catch(function () {
+      musicUnlock.hidden = false;
+    });
+  });
+
+  musicUnlock.addEventListener("click", function () {
+    musicUnlock.textContent = "Ativando áudio…";
+    if (!openingScreen.hidden) {
+      openingVideo.muted = false;
+      openingVideo.defaultMuted = false;
+      openingVideo.removeAttribute("muted");
+      openingVideo.volume = 1.0;
+      // A abertura já está tocando em autoplay silencioso; play() no gesto
+      // do visitante libera o áudio sem reiniciar o vídeo.
+      openingVideo.play().catch(function () {
+        musicError.textContent = "Toque novamente para liberar o áudio do opening.";
+        musicError.hidden = false;
+        musicUnlock.hidden = false;
+      });
+    }
+    startMusic().then(function (ok) {
+      if (ok && (openingScreen.hidden || !openingVideo.muted)) {
+        musicUnlock.hidden = true;
+      } else {
+        musicUnlock.textContent = "Tentar ativar áudio";
+        musicUnlock.hidden = false;
+      }
+    });
+  });
+
+  manualHotspot.addEventListener("click", function () {
+    if (editorMode) return;
+    mainVideo.pause();
+    showOnly(manualScreen);
+  });
+
+  $("backToMain").addEventListener("click", function () {
+    showOnly(mainScreen);
+    mainVideo.play().catch(function () {});
+  });
+
+  // O opening começa automaticamente sem som por política de autoplay do navegador.
+  // O botão "Ativar áudio e música" libera as falas/efeitos do opening e a trilha MP3.
+  function autoplayOpening() {
+    openingVideo.muted = true;
+    openingVideo.defaultMuted = true;
+    openingVideo.setAttribute("muted", "");
+    openingVideo.playsInline = true;
+    openingVideo.play().then(function () {
+      openingFallback.hidden = true;
+    }).catch(function () {
+      openingFallback.textContent = "Toque para iniciar o vídeo de abertura.";
+      openingFallback.hidden = false;
+    });
+  }
+
+  // Editor: mostra o vídeo principal e as áreas de clique sem tocar a abertura.
+  if (editorMode) {
+    document.body.style.background = "#080204";
+    [manualHotspot].forEach(function (el) {
+      el.style.outline = "2px dashed #20e8ff";
+      el.style.background = "rgba(20,220,255,.13)";
+      el.style.touchAction = "none";
+      el.style.color = "#ffffff";
+      el.style.font = "700 11px system-ui,sans-serif";
+      el.style.textShadow = "0 1px 3px #000";
+    });
+    manualHotspot.textContent = "MANUAL DO CONVIDADO";
+    showOnly(mainScreen);
+    editorPanel.hidden = false;
+    mainVideo.muted = true;
+    mainVideo.loop = true;
+    mainVideo.play().catch(function () {});
+    try {
+      var saved = JSON.parse(localStorage.getItem(storageKey) || "null");
+      if (saved && saved.manual) areas = { manual: saved.manual };
+    } catch (e) {}
+  } else {
+    showOnly(openingScreen);
+    music.loop = true;
+    autoplayOpening();
+    startMusic();
+  }
+
+  // ---------------- Editor das duas áreas invisíveis ----------------
+  var areaSelect = $("areaSelect");
+  var leftInput = $("leftInput");
+  var topInput = $("topInput");
+  var widthInput = $("widthInput");
+  var heightInput = $("heightInput");
+  var exportCode = $("exportCode");
+  var editorStatus = $("editorStatus");
+  var selected = "manual";
+
+  function updateFields() {
+    if (!editorMode) return;
+    var p = areas[selected];
+    leftInput.value = Number(p.left).toFixed(1);
+    topInput.value = Number(p.top).toFixed(1);
+    widthInput.value = Number(p.width).toFixed(1);
+    heightInput.value = Number(p.height).toFixed(1);
+  }
+
+  function updateExport() {
+    if (!editorMode) return;
+    exportCode.value = "hotspots: " + JSON.stringify(areas, null, 2) + ",";
+  }
+
+  function selectArea(key) {
+    selected = key;
+    areaSelect.value = key;
+    updateFields();
+  }
+
+  areaSelect.addEventListener("change", function () {
+    selectArea(areaSelect.value);
+  });
+
+  [leftInput, topInput, widthInput, heightInput].forEach(function (input) {
+    input.addEventListener("input", function () {
+      var p = areas[selected];
+      p.left = Number(leftInput.value);
+      p.top = Number(topInput.value);
+      p.width = Number(widthInput.value);
+      p.height = Number(heightInput.value);
+      applyAreas();
+    });
+  });
+
+  Object.keys(hotspotElements).forEach(function (key) {
+    var el = hotspotElements[key];
+    var handle = document.createElement("span");
+    handle.style.position = "absolute";
+    handle.style.right = "-7px";
+    handle.style.bottom = "-7px";
+    handle.style.width = "18px";
+    handle.style.height = "18px";
+    handle.style.border = "2px solid white";
+    handle.style.borderRadius = "50%";
+    handle.style.background = "#09a9c5";
+    handle.style.display = editorMode ? "block" : "none";
+    handle.style.cursor = "nwse-resize";
+    el.appendChild(handle);
+
+    el.addEventListener("click", function (event) {
+      if (editorMode) {
+        event.preventDefault();
+        selectArea(key);
+      }
+    });
+
+    el.addEventListener("pointerdown", function (event) {
+      if (!editorMode) return;
+      event.preventDefault();
+      event.stopPropagation();
+      selectArea(key);
+      var stage = $("mainStage").getBoundingClientRect();
+      var p = areas[key];
+      var start = { x: event.clientX, y: event.clientY, left: p.left, top: p.top, width: p.width, height: p.height };
+      var resizing = event.target === handle;
+      el.setPointerCapture(event.pointerId);
+      function move(ev) {
+        var dx = (ev.clientX - start.x) / stage.width * 100;
+        var dy = (ev.clientY - start.y) / stage.height * 100;
+        if (resizing) {
+          areas[key].width = Math.max(2, Math.min(100 - start.left, start.width + dx));
+          areas[key].height = Math.max(2, Math.min(100 - start.top, start.height + dy));
+        } else {
+          areas[key].left = Math.max(0, Math.min(100 - start.width, start.left + dx));
+          areas[key].top = Math.max(0, Math.min(100 - start.height, start.top + dy));
+        }
+        applyAreas();
+      }
+      function end() {
+        el.removeEventListener("pointermove", move);
+        el.removeEventListener("pointerup", end);
+        el.removeEventListener("pointercancel", end);
+        editorStatus.textContent = "Área ajustada. Copie as posições para salvar no GitHub.";
+      }
+      el.addEventListener("pointermove", move);
+      el.addEventListener("pointerup", end);
+      el.addEventListener("pointercancel", end);
+    });
+  });
+
+  $("saveLocal").addEventListener("click", function () {
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(areas));
+      editorStatus.textContent = "Posições salvas neste navegador.";
+    } catch (e) {
+      editorStatus.textContent = "Não foi possível salvar. Copie as posições.";
+    }
+  });
+
+  $("copyConfig").addEventListener("click", function () {
+    updateExport();
+    exportCode.focus();
+    exportCode.select();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(exportCode.value).then(function () {
+        editorStatus.textContent = "Posições copiadas. Cole dentro de hotspots no config.js.";
+      }).catch(function () {
+        editorStatus.textContent = "Código selecionado. Use Copiar no navegador.";
+      });
+    } else {
+      editorStatus.textContent = "Código selecionado. Use Copiar no navegador.";
+    }
+  });
+
+  $("resetAreas").addEventListener("click", function () {
+    areas = JSON.parse(JSON.stringify(defaultAreas));
+    try { localStorage.removeItem(storageKey); } catch (e) {}
+    applyAreas();
+    editorStatus.textContent = "Posições padrão restauradas.";
+  });
+
+  $("closeEditor").addEventListener("click", function () {
+    var url = new URL(window.location.href);
+    url.searchParams.delete("editor");
+    window.location.href = url.toString();
+  });
+
+  applyAreas();
+})();
+</script>
+</body>
+</html>
